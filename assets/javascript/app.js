@@ -7,7 +7,7 @@ function createButton() {
     
     $("#buttons").empty();
     for (var i = 0; i < topics.length; i++) {
-      var a = $("<button>");
+      var a = $('<button type="button" class="btn btn-outline-danger buttons">');
       a.addClass("topics");
       a.attr("data-name", topics[i]);
       a.text(topics[i]);
@@ -18,6 +18,13 @@ function createButton() {
 $(document).ready(function() {
     createButton();
     addClickEvent();
+    $("#add-topic").keydown(function(e) {
+    if (e.which === 13){
+      e.preventDefault();
+      createNewTopic($("#topic-input").val());
+      addClickEvent();
+    }
+    });
       $("#add-topic").click(function(e) {
         e.preventDefault();
         createNewTopic($("#topic-input").val());
@@ -54,7 +61,7 @@ function grabIMG() {
 }
 
 function createNewTopic(topicName){
-  var a = $("<button>");
+  var a = $('<button type="button" class="btn btn-outline-danger buttons">');
   a.addClass("topics");
   a.text(topicName);
   a.attr("data-name", topicName);
