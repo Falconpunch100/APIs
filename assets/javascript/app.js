@@ -18,7 +18,8 @@ function createButton() {
 $(document).ready(function() {
     createButton();
     addClickEvent();
-    $("#add-topic").keydown(function(e) {
+    $("#topic-input").keydown(function(e) {
+    console.log(e.which);
     if (e.which === 13){
       e.preventDefault();
       createNewTopic($("#topic-input").val());
